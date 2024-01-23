@@ -1,0 +1,152 @@
+:root{
+    --main_color: black;
+    --text_color: rgb(206, 0, 0);
+    --btn_color: rgb(189, 27, 27);
+    
+    --basic_border:  4px solid rgb(230, 233, 163);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* BACKGROUND*/
+
+.top{
+    height: 150px;
+    width: auto;
+    background-color: bisque;
+}
+
+
+body{
+    max-width: 100vw;
+    max-height: 100vh;
+    background-color: #221918;
+    opacity: 1;
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+}
+/* DISPLAY BAND BOXES */
+#container{
+    display: flex ;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#box-wrapper{
+    
+    background: rgb(131, 111, 111);
+    border: 2px solid white;
+    text-align: center;
+    transform: scale(0.8);
+    border: 2px solid white;
+    
+}
+#box-name{
+    color: var(--text_color);
+    background: var(--main_color);
+    padding: 0.8em 0;
+}
+/* ARTISTS CONTENT WRAPPER */
+.box-content-wrapper{
+    min-width:  50em;
+    max-height: 90vh;
+    color: rgb(121, 27, 27);
+    background: rgba(141, 141, 118, 0.899);
+    padding: 1em;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-areas: 
+            "S C M";
+    align-content: center;
+    justify-content: center;
+    z-index: 50;
+    overflow:auto;
+}
+
+.box-content-wrapper img{
+    
+    width: 200px;
+    margin-top: 4em;
+    margin: 4em 2em 2em 2em;
+    height: 200px;
+    grid-area: P ;
+    border: 1px solid rgb(230, 233, 163);
+    box-shadow: 0 0 20px #d1d189;
+}
+
+#top-box{
+    text-align: center;
+    font-size: 4.6em;
+}
+
+#name-box{
+    font-size: 1.2em;
+    grid-area: C;
+    text-align: center;
+}
+#members{
+    grid-area: M;
+    margin-top: 1em;
+    min-width: 10em;
+    margin-left: 1em;
+    white-space: nowrap;
+}
+#shows{
+    grid-area: S;
+    margin-left: 2em;
+    margin-top: 1em;
+}
+#members p, #shows p{
+    font-size: 2em;
+    font-style: italic;
+    text-decoration: underline;
+
+}
+#members li, #shows li{
+    font-size: 1.2em;
+    margin: 0.2em;
+    list-style: none;
+
+}
+#shows li {
+    margin-left:2em;
+}
+#back-btn{
+    position: absolute;
+    cursor: pointer;
+    margin: 0.2em;
+    right: 0;
+    font-size: 1em;
+    padding:  0 0.4em;
+    border: 1px solid var(--btn_color);
+    color:var(--btn_color);
+}
+
+/* CLASSS HIDDDEN */
+.hide{
+    display: none;
+}
+.glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/main.css">
+        <title>GROUPIE_TRACKER</title>
+        <style>
+            @import url("/css/main.css");
+        </style>
+    </head>
+    <body>
+        <div class = "top" >
+       <h1 class="glow"> Groupie Tracker </h1>
+        </div>
+    <div id="container">
+        {{range .}}
+        <div id="artist-card">
+            <div id="box-wrapper" class="{{ .Name}}">
+                <img src="{{.Image}}" alt="{{ .Name}} cover">
+                <h3 id="box-name">{{ .Name}}</h3>
+            </div>
+
+            <div class="box-content-wrapper hide">
+                <div id="back-btn">
+                    <h1>X</h1>
+                </div>
+                <div id="name-box">
+                    <img src={{.Image}} alt="{{ .Name}} cover">
+                     <div>
+                    <p id="content-name"> {{ .Name}}</p>
+                    <p id="content-creationDate">Created in {{ .CreationDate}}</p>
+                    <p id="content-firstAlbum">First Album {{ .FirstAlbum}}</p>
+                    </div>
+                </div>
+
+                <div id="members">
+                    <p>Members</p>
+                    <ul>
+                        {{range $index, $element := .Members}}
+                        <li>{{$element}}</li>
+                        {{end}}
+                    </ul>
+                </div>
+                
+                <div id="shows">
+                    <p id="content-shows">Shows</p>
+                    {{range $key, $val := .Connection}}
+                    <div>
+                        <h4>{{$key}}</h4>
+                        {{range $element := $val}}
+                        <li>{{$element}}</li>
+                        {{end}}
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </div> 
+        {{end}}
+    </div> 
+
+
+    <script>
+            const artist_card = document.querySelectorAll("#box-wrapper")
+            const box_containers = document.querySelectorAll(".box-content-wrapper")
+            const exit_btn = document.querySelectorAll("#back-btn")
+            
+            function show(e){
+                box_containers.forEach(box => box.classList.add("hide"))
+                const parentElement = e.currentTarget.parentElement
+                const content = parentElement.querySelector(".box-content-wrapper")
+                content.classList.remove("hide")
+            }
+            function hide(e){
+                e.currentTarget.parentElement.classList.add("hide")           
+            }
+            artist_card.forEach(box => box.addEventListener('click', show))
+            exit_btn.forEach(btn => btn.addEventListener('click', hide))
+        </script>                
+    </body>
+</html>
